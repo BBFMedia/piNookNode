@@ -1,8 +1,6 @@
 #!/usr/bin/env node
-var dict = require('gbk-dict').init();
 
-var fs = require('fs');
-fs.writeFile(__dirname+'/GBK.js',JSON.stringify(dict.getMap()));
+
 
 var program = require('commander'),
 
