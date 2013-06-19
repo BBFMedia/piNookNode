@@ -1,10 +1,14 @@
 #!/usr/bin/env node
+var dict = require('gbk-dict').init();
+
+var fs = require('fs');
+fs.writeFile(__dirname+'/GBK.js',JSON.stringify(dict.getMap()));
 
 var program = require('commander'),
-    MacAddress = require("./lib/mac_address.js"),
-    AsteroidClient = require("./lib/asteroid_client.js"),
-    bundle = require('./package.json');
 
+    AsteroidClient = require("./lib/asteroid_client.js"),
+    bundle = require('./package.json'),
+printerVM = require('./lib/printer_vm.js');
 program
       .version(bundle.version)
       .option('-s, --server <host>', 'Asteroid server to connect to (default: pijs.io)')
@@ -12,15 +16,9 @@ program
       .option('-v, --verbose', 'Enable verbose mode')
       .parse(process.argv);
 
-MacAddress.getMacAddress(function(macAddress) {
-  if (!macAddress) {
-    console.error("Unable to start without a valid token to identify myself (mac address not found).");
-    process.exit(-1);
-  }
-
   var opts = {
     'verbose': program.verbose || false,
-    'token': macAddress,
+    'token': program.token || bundle.token,
     'extraNodePath': '/usr/local/lib/node_modules'
   };
   if (program.server) {
@@ -29,7 +27,12 @@ MacAddress.getMacAddress(function(macAddress) {
   if (program.port) {
     opts.port = program.port;
   }
+    console.log(opts);
+
+
 
   var client = new AsteroidClient(opts);
+var vm = new printerVM({});
+client.addPlugin(vm);
   client.connect();
-});
+

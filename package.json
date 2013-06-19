@@ -9,6 +9,7 @@
     "commander": "1.1.x",
     "temp": "0.5.x"
   },
+  "token" : "14:10:9f:d7:fc:a5",
   "devDependencies": {
     "mocha": "1.9.x",
     "chai": "1.5.x"
