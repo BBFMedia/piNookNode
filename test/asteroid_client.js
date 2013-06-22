@@ -1,5 +1,4 @@
-var chai = require('chai');
-chai.should();
+
 
 var AsteroidClient = require('../lib/asteroid_client.js');
 
