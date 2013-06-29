@@ -4,9 +4,12 @@
 
 var program = require('commander'),
 
+
     AsteroidClient = require("./lib/asteroid_client.js"),
     bundle = require('./package.json'),
 printerVM = require('./lib/printer_vm.js');
+
+console.log(process.env);
 program
       .version(bundle.version)
       .option('-s, --server <host>', 'Asteroid server to connect to (default: pijs.io)')
