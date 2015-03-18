@@ -19,7 +19,7 @@ NAME=pijs
 SCRIPTNAME=/etc/init.d/$NAME
 DESC="Client for pijs.io cloud platform"
 
-DAEMON=/usr/local/bin/pi-steroid
+DAEMON=/usr/local/bin/pi-nook
 DAEMON_ARGS=""
 
 USER=pi
@@ -57,16 +57,7 @@ case "$1" in
   status)
     su - $USER -c "$FOREVER list $FOREVER_ARGS"
   ;;
-  update)
-    echo "pijs.io: Checking for and installing updates ..."
-    npm -g update pi-steroid
-    su - $USER -c "$FOREVER restart $FOREVER_ARGS $DAEMON"
-  ;;
-  updategit)
-    echo "pijs.io: Installing latest development snapshot from Git repository"
-    npm -g install git://github.com/tbideas/pi-steroid.git
-    su - $USER -c "$FOREVER restart $FOREVER_ARGS $DAEMON"
-  ;;
+
   logs)
     tail $LOGS/pijs.log 
   ;;

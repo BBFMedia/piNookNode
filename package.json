@@ -1,8 +1,8 @@
 {
-  "name": "pi-steroid",
-  "description": "A Raspberry Pi client for Asteroid (aka pijs.io) written in nodejs",
-  "author": "Thomas Sarlandie <thomas@sarlandie.net>",
-  "version": "0.1.1",
+  "name": "pi-nook",
+  "description": "A Raspberry Pi pos printer server. Epson POS Protocal on port 9000",
+
+  "version": "0.1.2",
   "dependencies": {
     "ddp": "0.3.3",
     "underscore": "1.4.x",
@@ -16,18 +16,11 @@
     "mocha": "1.9.x",
     "chai": "1.5.x"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tbideas/pi-steroid.git"
-  },
-  "bugs": {
-    "url" : "https://github.com/tbideas/pi-steroid/issues"
-  },
+
   "engines": {
     "node": "*"
   },
   "bin": {
-    "pi-steroid": "./pi-steroid.js"
-  },
-  "licence": "MIT"
+    "pi-steroid": "./pi-nook.js"
+  }
 }
